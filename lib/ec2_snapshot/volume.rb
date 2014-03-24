@@ -12,7 +12,6 @@ module Ec2Snapshot
 
     def requires_snapshot?
       root_device = @instance.root_device_name
-      raise Exception, "No root device could be found" unless root_device
       (root_device == @device_name && @instance.create_rootvol_snapshot) || (root_device != @device_name && @instance.create_datavol_snapshot)
     end
 
